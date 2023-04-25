@@ -38,6 +38,11 @@ class Player
     end
     puts "Min Health: #{@minhealth}"
 
+    if warrior.feel.captive?
+      warrior.rescue!
+      return
+    end
+
     if warrior.feel.empty? &&
        warrior.health < 20 &&
        !lostHealth
