@@ -1,3 +1,5 @@
+require 'pry-byebug'
+
 MAX_HP = 20
 
 class Player
@@ -11,6 +13,16 @@ class Player
 
   def play_turn(warrior)
     @turn += 1
+
+    # Here's what various troubleshooting features look like
+
+    # puts warrior.inspect
+    # puts warrior.to_s
+    # pp warrior
+
+    # if @turn == 35
+    #   binding.pry
+    # end
 
     puts "Health: #{warrior.health}"
 
