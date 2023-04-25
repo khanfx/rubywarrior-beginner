@@ -6,19 +6,29 @@ class Player
     puts '-- Player initialize called --'
     @turn = 0
     @minhealth = 20
+    @lasthealth = 20
   end
 
   def play_turn(warrior)
     @turn += 1
-    puts "------------- Turn: #{@turn}"
+
+    puts "Health: #{warrior.health}"
+
+    lostHealth = false
+    if warrior.health < @lasthealth
+      puts "Lost health since last turn: #{@lasthealth-warrior.health}"
+      lostHealth = true
+    end
+    @lasthealth = warrior.health
 
     if warrior.health < @minhealth
       @minhealth = warrior.health
     end
-    puts "  Min Health: #{@minhealth}"
+    puts "Min Health: #{@minhealth}"
 
     if warrior.feel.empty? &&
-       warrior.health < 7
+       warrior.health < 20 &&
+       !lostHealth
       warrior.rest!
       return
     end
